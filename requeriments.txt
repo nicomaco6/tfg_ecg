@@ -1,0 +1,7 @@
+numpy
+matplotlib
+wfdb
+neurokit2
+scipy
+pandas
+openpyxl
