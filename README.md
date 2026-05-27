@@ -15,13 +15,13 @@ L’estructura principal del projecte és la següent:
 ```text
 tfg_ecg/
 │
+├── README.md
 ├── main.py
 ├── metode_neurokit.py
 ├── metode_pan_tompkins.py
 ├── metode_propi.py
 ├── exportar_resultats.py
 ├── requirements.txt
-├── README.md
 ```
 
 ## Fitxers principals
@@ -74,10 +74,13 @@ L’estructura esperada és la següent:
 ```text
 tfg_ecg/
 │
+├── README.md
 ├── main.py
+├── metode_neurokit.py
+├── metode_pan_tompkins.py
+├── metode_propi.py
 ├── exportar_resultats.py
 ├── requirements.txt
-├── README.md
 │
 └── datasets/
     ├── mitbih/
