@@ -1,5 +1,6 @@
 **Nicolás Martín Costa**  
-Treball Final de Grau - Grau en Enginyeria Biomèdica
+Treball Final de Grau - Grau en Enginyeria Biomèdica  
+Universitat de Girona
 
 Aquest repositori conté el codi desenvolupat per al Treball de Fi de Grau:
 
@@ -29,18 +30,18 @@ TFG_ECG/
 - `metode_neurokit.py`: implementació de la detecció QRS mitjançant NeuroKit2.
 - `metode_pan_tompkins.py`: implementació del detector basat en l’algorisme Pan-Tompkins.
 - `metode_propi.py`: implementació del mètode propi de detecció QRS.
-- `exportar_resultats.py`: script auxiliar per generar automàticament un fitxer Excel amb els resultats agregats.
+- `exportar_resultats.py`: script auxiliar per generar automàticament un fitxer Excel amb els resultats globals i per registre.
 - `requirements.txt`: fitxer amb les llibreries necessàries per executar el projecte.
 
 ## Requeriments d’instal·lació
 
-Per executar el projecte cal disposar de Python instal·lat. Les llibreries necessàries es poden instal·lar amb la comanda següent:
+Per executar el projecte cal disposar de Python instal·lat. Les dependències necessàries es poden instal·lar amb la comanda següent:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-El fitxer `requirements.txt` inclou les dependències principals:
+El fitxer `requirements.txt` inclou les llibreries principals utilitzades pel projecte:
 
 ```text
 numpy
@@ -52,7 +53,7 @@ pandas
 openpyxl
 ```
 
-La interfície gràfica utilitza `tkinter`, que habitualment ja s’inclou amb la instal·lació estàndard de Python.
+La interfície gràfica utilitza `tkinter`, que habitualment ja s’inclou amb la instal·lació estàndard de Python. En cas que no estigui disponible, caldrà instal·lar-lo o activar-lo segons el sistema operatiu utilitzat.
 
 ## Bases de dades
 
@@ -103,7 +104,7 @@ Per iniciar el sistema, cal executar:
 python main.py
 ```
 
-En executar-lo, s’obre una interfície inicial on l’usuari pot seleccionar:
+En executar-lo, s’obre una interfície inicial que permet seleccionar:
 
 1. El mètode de detecció QRS.
 2. El registre del dataset MIT-BIH.
@@ -135,20 +136,20 @@ Registre MIT-BIH: 100
 Registre BUT QDB: 122001
 ```
 
-3. Prémer **Executar**.
+3. Prémer el botó **Executar**.
 
 4. El sistema mostrarà primer els resultats corresponents al dataset MIT-BIH, incloent:
 
-- tram ECG analitzat,
-- pics detectats,
-- anotacions reals,
-- histogrames dels intervals RR,
+- tram ECG visualitzat,
+- pics R detectats,
+- anotacions reals del registre,
+- histogrames dels intervals RR reals i detectats,
 - valors de TP, FP i FN,
 - precisió, sensibilitat i F1-score.
 
 5. A continuació, es mostraran les pantalles corresponents al dataset BUT QDB, amb:
 
-- detecció dels pics R,
+- detecció dels pics R sobre el tram analitzat,
 - histograma dels intervals RR,
 - histograma dels intervals NN,
 - SDRR,
@@ -156,11 +157,22 @@ Registre BUT QDB: 122001
 - RMSSD calculada sobre RR,
 - RMSSD calculada sobre NN.
 
-La navegació entre pantalles es realitza mitjançant els botons de la interfície.
+Si el registre seleccionat no disposa d’un tram vàlid per a una determinada classe de qualitat, el programa mostra una pantalla informativa indicant que aquella classe no està disponible.
+
+## Navegació dins la interfície
+
+La navegació entre pantalles es realitza mitjançant els botons situats a la part inferior de la interfície:
+
+- **Següent**: avança a la pantalla següent.
+- **Anterior**: torna a la pantalla anterior.
+- **Tornar al menú**: permet tornar a la pantalla inicial per seleccionar una nova configuració.
+- **Finalitzar**: tanca l’execució del programa.
+
+També es poden utilitzar les fletxes del teclat per avançar o retrocedir entre pantalles.
 
 ## Exportació de resultats
 
-Per generar el fitxer Excel amb els resultats agregats, cal executar:
+Per generar el fitxer Excel amb els resultats agregats de l’anàlisi, cal executar:
 
 ```bash
 python exportar_resultats.py
@@ -172,7 +184,7 @@ Aquest script genera automàticament el fitxer:
 resultats_tfg.xlsx
 ```
 
-Aquest fitxer no s’inclou directament al repositori, ja que es pot obtenir executant l’script corresponent.
+Aquest fitxer no s’inclou directament al repositori, ja que es pot obtenir executant l’script corresponent a partir del codi i de les dades descarregades.
 
 ## Notes sobre reproduïbilitat
 
@@ -181,7 +193,10 @@ Per reproduir correctament l’anàlisi cal:
 1. Instal·lar les dependències indicades.
 2. Descarregar les bases de dades originals.
 3. Col·locar-les dins la carpeta `datasets/` amb l’estructura indicada.
-4. Executar `main.py` o `exportar_resultats.py` segons el tipus d’anàlisi que es vulgui realitzar.
+4. Executar `main.py` per visualitzar els resultats.
+5. Executar `exportar_resultats.py` si es vol generar el fitxer Excel amb els resultats agregats.
+
+Les rutes del projecte estan definides respecte a la ubicació dels fitxers Python, de manera que la carpeta `datasets/` ha d’estar situada al nivell arrel del projecte.
 
 ## Autor
 
